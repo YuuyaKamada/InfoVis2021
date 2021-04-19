@@ -1,0 +1,21 @@
+<html>
+        <head>
+                <title>W02: Task 2</title>
+        </head>
+        <body>
+            <script src="vec3.js"></script>
+                <script>
+                            var u0 = new Vec3(0, 0, 0);
+                            var u1 = new Vec3(8, 0, 0);
+                            var u2 = new Vec3(0, 6, 0);
+
+                            let l0 = Math.sqrt(Math.pow(u0.x - u1.x,2) + Math.pow(u0.y - u1.y,2) + Math.pow(u0.z - u1.z,2));
+                            let l1 = Math.sqrt(Math.pow(u1.x - u2.x,2) + Math.pow(u1.y - u2.y,2) + Math.pow(u1.z - u2.z,2));
+                            let l2 = Math.sqrt(Math.pow(u2.x - u0.x,2) + Math.pow(u2.y - u0.y,2) + Math.pow(u2.z - u0.z,2));
+                            let s = (l0 + l1 + l2)/2;
+                            let s2 = Math.sqrt(s*(s-l0)*(s-l1)*(s-l2),2);
+
+                            document.write('RESULT:',s2);
+                </script>
+        </body>
+</html>

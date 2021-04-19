@@ -1,0 +1,26 @@
+<html>
+        <head>
+                <title>W02: Task 2</title>
+        </head>
+        <body>
+                <label>x:</label><input type = "number" id = "n1"/>
+                <input type = "button" value = "Go" id = "go"/>
+                <script>
+                    //var element = document.getElementById('go');
+                    //element.addEventListener('click',function(){
+                    //    var x = document.getelementById("n1").value;
+                    //    document.wtire(x);
+                    //})
+                    document.getElementById('go')
+                            .addEventListener('click',function(){
+                                document.wtire('c');
+                                const num1 = document.getElementById("n1");
+                                const num2 = num1.value;
+                                document.wtire('a');
+                                document.wtire(num2);
+                                document.wtire('b');
+
+                            });
+                </script>
+        </body>
+</html>

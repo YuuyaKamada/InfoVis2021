@@ -1,0 +1,24 @@
+<html>
+        <head>
+                <title>W02: Task 2</title>
+        </head>
+        <body>
+            <script src="vec3.js"></script>
+            <label>x:<input type="number" id="n1" /></label>
+            <label>y:<input type="number" id="n2" /></label>
+            <label>z:<input type="number" id="n3" /></label>
+            <input type="button" value="Go" onclick="clickBtn()" />
+                <script>
+                        function clickBtn() {
+                            var number1 = document.getElementById("n1");
+                            var number2 = document.getElementById("n2");
+                            var number3 = document.getElementById("n3");
+                            var v = new Vec3(number1.value, number2.value, number3.value);
+                            var min = v.min();
+                            var mid = v.mid();
+                            var max = v.max();
+                            document.write('min:',min,' mid:',mid,'max:',max);
+                        }
+                </script>
+        </body>
+</html>

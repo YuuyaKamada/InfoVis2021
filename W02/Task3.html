@@ -1,0 +1,46 @@
+<html>
+        <head>
+                <title>W02: Task 2</title>
+        </head>
+        <body>
+            <script src="vec3.js"></script>
+            <label>x0:<input type="number" id="n1" /></label>
+            <label>y0:<input type="number" id="n2" /></label>
+            <label>z0:<input type="number" id="n3" /></label><br>
+            <label>x1:<input type="number" id="n4" /></label>
+            <label>y1:<input type="number" id="n5" /></label>
+            <label>z1:<input type="number" id="n6" /></label><br>
+            <label>x2:<input type="number" id="n7" /></label>
+            <label>y2:<input type="number" id="n8" /></label>
+            <label>z2:<input type="number" id="n9" /></label><br>
+            <input type="button" value="Go" onclick="clickBtn()" />
+                <script>
+                        function clickBtn() {
+
+                            var number1 = document.getElementById("n1");
+                            var number2 = document.getElementById("n2");
+                            var number3 = document.getElementById("n3");
+                            var number4 = document.getElementById("n4");
+                            var number5 = document.getElementById("n5");
+                            var number6 = document.getElementById("n6");
+                            var number7 = document.getElementById("n7");
+                            var number8 = document.getElementById("n8");
+                            var number9 = document.getElementById("n9");
+
+                            var u0 = new Vec3(number1.value, number2.value, number3.value);
+                            var u1 = new Vec3(number4.value, number5.value, number6.value);
+                            var u2 = new Vec3(number7.value, number8.value, number9.value);
+
+                            let l0 = Math.sqrt(Math.pow(u0.x - u1.x,2) + Math.pow(u0.y - u1.y,2) + Math.pow(u0.z - u1.z,2));
+                            let l1 = Math.sqrt(Math.pow(u1.x - u2.x,2) + Math.pow(u1.y - u2.y,2) + Math.pow(u1.z - u2.z,2));
+                            let l2 = Math.sqrt(Math.pow(u2.x - u0.x,2) + Math.pow(u2.y - u0.y,2) + Math.pow(u2.z - u0.z,2));
+                            let s = (l0 + l1 + l2)/2;
+
+                            let S1 = Math.sqrt(s*(s-l0)*(s-l1)*(s-l2));
+
+                            //var S = aaa(v0, v1, v2);
+                            document.write('RESULT:',S1);
+                        }
+                </script>
+        </body>
+</html>
