@@ -7,7 +7,7 @@
         <p>ーーーーーーーーーーーーーーーーーーーーーーー</p>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script>
-	 var padding = 40;
+	 var padding = 60;
 	 var height = 20;
 
 	 var svg = d3.select("body").append("svg");
@@ -44,7 +44,7 @@
 	        .append("rect")
 	        .attr("x", padding)
 	        .attr("y", function(d,i){ return 10 + i * (height + 10); })
-	        .attr("width", function(d){ return d.width; })
+	        .attr("width", function(d){ return d.width*3; })
 	        .attr("height", function(d){ return height; })
 
 	 };
