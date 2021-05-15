@@ -92,7 +92,7 @@ class ScatterPlot {
         let self = this;
 
         const line = d3.line()
-              .x( d => d.x )
+              .x( d => d.x + self.config.margin.left)
               .y( d => d.y );
 
         self.svg.append('path')
