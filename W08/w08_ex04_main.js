@@ -30,4 +30,6 @@ svg.selectAll('pie')
     .attr('d', arc)
     .attr('fill', 'black')
     .attr('stroke', 'white')
-    .style('stroke-width', '2px');
+    .style('stroke-width', '2px')
+    .append("text") // テキスト要素追加
+    .text(function(d) { return d.label; });
