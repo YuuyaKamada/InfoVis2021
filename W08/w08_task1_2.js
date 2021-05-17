@@ -1,6 +1,8 @@
 d3.csv("https://YuuyaKamada.github.io/InfoVis2021/W08/data1.csv")
     .then( data => {
-        data.forEach( d => { d.label = +d.label; d.value = +d.value; });
+        data.forEach( d => { d.label = d.label; d.value = +d.value; });
+
+        console.log(data);
 
         var config = {
             parent: '#drawing_region',
@@ -15,7 +17,17 @@ d3.csv("https://YuuyaKamada.github.io/InfoVis2021/W08/data1.csv")
     .catch( error => {
         console.log( error );
     });
+    /*d3.csv("https://YuuyaKamada.github.io/InfoVis2021/W08/data1.csv", function(error, data) {
+        var config = {
+            parent: '#drawing_region',
+            width: 256,
+            height: 128,
+            margin: {top:10, right:10, bottom:20, left:60}
+        };
 
+        const scatter_plot = new ScatterPlot( config, data );
+        scatter_plot.update();
+    });*/
 
 
 

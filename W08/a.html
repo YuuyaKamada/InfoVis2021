@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>D3 Pie Chart</title>
+<script src="d3.min.js"></script>
+<style>
+
+h1{
+  font-size: small;
+  font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+}
+
+svg{
+  font: 12px sans-serif;
+  background-color: #eee;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: #333;
+}
+</style>
+</head>
+
+<body>
+<h1>2022年国内IoT市場規模予測：約11.7兆円</h1>
+<script>
+  // 1. データの準備
+  var dataset = [
+    { "name": "サービス", "value": 33.7},
+    { "name": "ソフトウェア", "value": 22.7 },
+    { "name": "コネクティビティ", "value": 9.7 },
+    { "name": "ハードウェア", "value": 29.2 }
+  ]
+
+  var width = 600; // グラフの幅
+  var height = 400; // グラフの高さ
+  var radius = Math.min(width, height) / 2 - 10; // 円の半径
+
+  // SVG設定
+  var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+
+  g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+  // カラー設定
+  var color = d3.scaleOrdinal()
+    .range(["#A4243B", "#D8C99B", "#D8973C", "#BD632F", "#273E47"]);
+
+  // 円グラフ関数
+  var pie = d3.pie()
+    .value(function(d) { return d.value; })
+    .sort(null);
+
+  // 円グラフへのデータ設定
+  var pieChart = g.selectAll(".pie")
+    .data(pie(dataset))
+    .enter()
+    .append("g")
+    .attr("class", "pie");
+
+  arc = d3.arc()
+    .outerRadius(radius)
+    .innerRadius(0);
+
+  pieChart.append("path")
+    .attr("d", arc)
+    .attr("fill", function(d) { return color(d.index) })
+    .attr("opacity", 0.8)
+
+  // 円グラフにテキスト追加
+  var text = d3.arc()
+    .outerRadius(radius - 60)
+    .innerRadius(radius - 60);
+
+  pieChart.append("text")
+    .attr("fill", "black")
+    .attr("transform", function(d) { return "translate(" + text.centroid(d) + ")"; })
+    .attr("dy", "5px")
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d.data.name; });
+  </script>
+</body>
+
+</html>

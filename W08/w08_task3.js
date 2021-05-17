@@ -1,6 +1,9 @@
 d3.csv("https://YuuyaKamada.github.io/InfoVis2021/W08/data1.csv")
     .then( data => {
-        data.forEach( d => { d.label = +d.label; d.value = +d.value; });
+        data.forEach( d => { d.label = d.label; d.value = +d.value; });
+
+        console.log(data);
+
 
         var config = {
             parent: '#drawing_region',
@@ -67,27 +70,36 @@ class ScatterPlot {
             .value( d => d.value );
 
         const arc = d3.arc()
-            .innerRadius(0)
+            .innerRadius(50)
             .outerRadius(self.config.radius);
+
+        const arc_text = d3.arc()
+            .innerRadius(self.config.radius - 40)
+            .outerRadius(self.config.radius - 40);
+
 
         self.svg.selectAll('pie')
             .data( pie(self.data) )
             .enter()
             .append('path')
             .attr('d', arc)
-            .attr('fill', 'black')
+            .attr('fill', 'blue')
             .attr('stroke', 'white')
             .style('stroke-width', '2px')
 
         self.svg.selectAll('pie')
-            .data( pie(self.data) )
+            .data(pie(self.data))
             .enter()
             .append("text")
-            .attr("fill", "red")
-            .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+            .attr("fill", "white")
+            .attr("transform", function(d) { return "translate(" + arc_text.centroid(d) + ")"; })
+            .attr("font-size", "13")
             .attr("dy", "5px")
             .attr("text-anchor", "middle")
-            .text(function(d) { return d.label; });
+            .text(d => d.data.label);
+
+
+
 
     }
 }
