@@ -89,9 +89,11 @@ class ScatterPlot {
 
         self.xaxis_group = self.chart.append('g')
             .attr('transform', `translate(0, ${self.inner_height})`)
+            .call(self.xaxis)
 
 
         self.yaxis_group = self.chart.append('g')
+            .call(self.yaxis)
 
         update( self.data );
 
@@ -111,11 +113,7 @@ class ScatterPlot {
                     .attr("height", self.yscale.bandwidth());
                     console.log(data);
 
-            self.chart.selectAll('g')
-                    .join('g')
-                    .transition().duration(1000)
-                    .call( self.xaxis)
-                    .call( self.yaxis)
+
         }
 
         //const xmax = d3.max( self.data, d => d.value );

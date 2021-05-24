@@ -1,9 +1,9 @@
 var data = [
-    {x:20,y:20,r:10},
-    {x:100,y:50,r:10},
-    {x:70,y:80,r:10},
-    {x:170,y:30,r:10},
-    {x:150,y:70,r:10}];
+    {x:20,y:20,r:10,label:10},
+    {x:100,y:50,r:10,label:8},
+    {x:70,y:80,r:10,label:0},
+    {x:170,y:30,r:10,label:5},
+    {x:150,y:70,r:10,label:3}];
 
 var svg = d3.select('#drawing_region');
 
@@ -21,7 +21,7 @@ circles
     .on('mouseover', (e,d) => {
         d3.select('#tooltip')
             .style('opacity', 1)
-            .html(`<div class="tooltip-label">Position</div>(${d.x}, ${d.y})`);
+            .html(`<div class="tooltip-label">${d.label}</div>(${d.x}, ${d.y})`);
     })
     .on('mousemove', (e) => {
         const padding = 10;
