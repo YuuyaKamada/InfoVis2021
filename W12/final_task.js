@@ -1,6 +1,6 @@
 d3.csv("https://YuuyaKamada.github.io/InfoVis2021/W12/data.csv")
     .then( data => {
-        data.forEach( d => { d.d = d.d; d.w = d.w; d.n = +d.n; d.h = +d.h});
+        data.forEach( d => { d.date = d.date; d.weather = d.weather; d.number = +d.number; d.humidity = +d.humidity});
 
         console.log(data);
 
@@ -50,11 +50,11 @@ class BarChart {
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
 
         self.xscale = d3.scaleLinear()
-        .domain([0, d3.max(self.data, d => d.value)])
+        .domain([0, d3.max(self.data, d => d.number)])
         .range( [0, self.inner_width] );
 
         self.yscale = d3.scaleBand()
-            .domain(self.data.map(d => d.label))
+            .domain(self.data.map(d => d.date))
             .range( [0, self.inner_height] )
             .paddingInner(0.1);
 
@@ -63,6 +63,7 @@ class BarChart {
             .tickSizeOuter(0);
 
         self.yaxis = d3.axisLeft( self.yscale )
+            .ticks(5)
             .tickSizeOuter(0);
 
         self.xaxis_group = self.chart.append('g')
@@ -82,11 +83,16 @@ class BarChart {
 
             self.chart.selectAll('rect')
                     .data(self.data)
-                    .transition().duration(1000)
+                    .enter()
+                    .append('rect')
                     .attr("x", 0)
-                    .attr("y", d => self.yscale(d.d))
-                    .attr("width", d => self.xscale(d.n))
+                    .attr("y", d => self.yscale(d.date))
+                    .attr("width", d => self.xscale(d.numbr))
                     .attr("height", self.yscale.bandwidth());
+                    /*.attr("x", d => self.yscale(d.date))
+                    .attr("y", 0)
+                    .attr("width", self.yscale.bandwidth())
+                    .attr("height", d => self.xscale(d.numbr));*/
 
         self.render();
     }

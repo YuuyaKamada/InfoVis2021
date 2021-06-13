@@ -89,7 +89,7 @@ class BarChart {
     render() {
         let self = this;
         let c_w;
-        
+
         /*switch(self.data.weather){
                 case "r" : return "red"
                     break;

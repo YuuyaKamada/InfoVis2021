@@ -1,10 +1,13 @@
-var data = [
-    {label:'Apple', value:100},
-    {label:'Banana', value:200},
-    {label:'Cookie', value:50},
-    {label:'Doughnut', value:120},
-    {label:'Egg', value:80}
-];
+d3.csv("https://YuuyaKamada.github.io/InfoVis2021/W08/data.csv")
+    .then( data => {
+      data.forEach( d => { d.date = d.date; d.weather = d.weather; d.number = +d.number; d.humidity = +d.humidity});
+
+        console.log(data);
+
+    })
+    .catch( error => {
+        console.log( error );
+    });
 
 var width = 256;
 var height = 128;

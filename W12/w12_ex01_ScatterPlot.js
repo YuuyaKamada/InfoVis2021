@@ -1,4 +1,5 @@
 class ScatterPlot {
+
     constructor( config, data ) {
         this.config = {
             parent: config.parent,
